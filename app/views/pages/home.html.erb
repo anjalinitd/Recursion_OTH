@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/default.css" rel="stylesheet">
+<link rel="shortcut icon" href="assets/images/favicon.ico">
+<!-- =======================================================
+    Theme Name: Maxim
+    Theme URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+======================================================= -->
+<style >
+  body{
+    height: 100%;
+   width: 100%;
+
+     background-image: url("https://s-media-cache-ak0.pinimg.com/originals/f9/c4/4a/f9c44a9e748f379f2645665af44caff0.jpg");
+     background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
+   
+   background-size: contain;
+   margin-left: 50px;
+   margin-top: 300px;
+  }
+</style>
+</head>
+<body>
+<!-- navbar -->
+<div class="navbar-wrapper">
+
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1 class="brand"> <a  href="#">RECursion</a> </h1>
+    </div>
+    <ul id="menu-main" class="nav navbar-nav navbar-right">
+    <li><a title="team" href="home">Home</a></li>
+         <li><a title="team" href="leaderboard">Leaderboard</a></li>
+         
+          <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a>1. Write all answers in lowercase.</a></li>
+          <li><a>2. Don't include space between two words.</a></li>
+          <li><a>3. Try to link the question with the image.</a></li>
+          <li><a>4. Save the letters you get for future.</a></li>
+        </ul>
+      </li>
+      
+      <% if current_user!=nil %> 
+      <li><a href="#">Score: <%= current_score %> </a></li>
+      <li class="dropdown"> 
+         
+         <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
+       <ul class="dropdown-menu">
+          <li><a href="edit">Update Profile</a></li>
+          <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
+        </ul>
+      </li>
+      <% else %>
+      <li><a>Login with</a></li>
+      <li><a href="auth/facebook"> <img border="0" alt="facebook" src="fb.jpg" width="30" height="30"></a></li>
+      <li><a>or</a></li>
+      <li><a href="/auth/google_oauth2"> <img border="0" alt="Gmail" src="gmail.jpg" width="30" height="30"></a></li>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+</nav>
+</div>
+<!-- Header area -->
+
+    
+    <% if current_user %>
+    <div class="text-center">
+    <a href="index" class="btn btn-info" role="button">Go to treasure hunt</a>
+    </div>
+    <%end %>
+</section>
+
+
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery.scrollTo.js"></script>
+<script src="js/jquery.nav.js"></script>
+<script src="js/jquery.localscroll-1.2.7-min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/isotope.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script src="js/inview.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/custom.js"></script>
+<script src="contactform/contactform.js"></script>
+
+</body>
+</html>

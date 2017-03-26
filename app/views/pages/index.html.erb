@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>    
+    /* Set black background color, white text and some padding */
+    body{
+       height: 100%;
+   width: 100%;
+
+      background-image: url("https://static1.squarespace.com/static/532b3fbfe4b0c5a9ade0bc44/t/58055365579fb3bd4def74e5/1479485156983/compass2.jpg");
+        background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
+   background-size: cover;
+      padding: 35px;
+      margin-top: 80px;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div class="navbar-wrapper">
+
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1 class="brand"> <a  href="#">RECquest</a> </h1>
+    </div>
+    <ul id="menu-main" class="nav navbar-nav navbar-right">
+      <li><a title="team" href="home">Home</a></li>
+      <li><a title="team" href="leaderboard">Leaderboard</a></li>
+      <li><a href="#">Score:
+      <% if current_user %>
+       <%= current_user.score %>
+         <% end %>
+       </a></li>
+          <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a>1. Write all answers in lowercase.</a></li>
+          <li><a>2. Don't include space between two words.</a></li>
+          <li><a>3. Try to link the question with the image.</a></li>
+          <li><a>4. Save the letters you get for future.</a></li>
+        </ul>
+      </li>
+
+          
+
+
+         <li class="dropdown"> 
+        <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> 
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="edit">My Profile</a></li>
+          <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
+        </ul>
+      </li>
+          
+    </ul>
+  </div>
+  </div>
+</nav>
+</div>
+
+
+<div class="row">
+<div class="span6">
+<div class="well">
+<% if @question!=nil %>
+<p><%= @question.statement%> </p>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="span6">
+<div class="well">
+
+<%= form_tag(index_path, method: "get") do %>
+                                  
+                                  <div class="form-group">
+                                      <!-- <input type="text" name="name" class="form-control" required="required" placeholder="Name"> -->
+                                      <%= text_area_tag :answer, params[:answer], placeholder: "Your Answer", class: 'form-control' %>
+                               
+
+                                 </div> 
+
+                                 <div class="span3">
+                                      <!-- <input type="submit" name="submit" class="btn btn-submit" value="Submit"> -->
+                                      <%= submit_tag "Submit", class:'btn btn-submit' %>
+                                  </div> 
+                    <% end %>
+
+
+</div>
+</div>
+
+
+<div class="span5">
+<% if @question.imageurl!=nil %>
+<img src="<%=@question.imageurl%>" class="slider-hill" alt="slider image">
+  <%end%> 
+  
+
+<%= audio_tag("300.wav", autoplay: false, controls: true) %>
+<% else%>
+<h1>Wait for the Upcoming Questions.</h1>
+<%end%>
+</div>
+</div>
+
+
+
+</body>
+</html>
+
+
