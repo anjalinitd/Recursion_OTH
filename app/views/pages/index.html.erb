@@ -10,32 +10,28 @@
       background-image: url("https://static1.squarespace.com/static/532b3fbfe4b0c5a9ade0bc44/t/58055365579fb3bd4def74e5/1479485156983/compass2.jpg");
         background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
    background-size: cover;
-      padding: 35px;
-      margin-top: 80px;
+      padding-left: 30px;
+      margin-top: 150px;
     }
     
   </style>
 </head>
 <body>
 
+<!-- navbar -->
 <div class="navbar-wrapper">
 
  <nav class="navbar navbar-inverse navbar-fixed-top">
  <div class="navbar-inner">
   <div class="container-fluid">
     <div class="navbar-header">
-      <h1 class="brand"> <a  href="#">RECquest</a> </h1>
+      <h1 class="brand"> <a  href="#">RECursion</a> </h1>
     </div>
     <ul id="menu-main" class="nav navbar-nav navbar-right">
-      <li><a title="team" href="home">Home</a></li>
-      <% if current_user!=nil %> 
-      <li><a title="team" href="leaderboard">Leaderboard</a></li>
-      <% end %>
-      <li><a href="#">Score:
-      <% if current_user %>
-       <%= current_user.score %>
+    <li><a title="team" href="home">Home</a></li>
+        <% if current_user!=nil %> 
+         <li><a title="team" href="leaderboard">Leaderboard</a></li>
          <% end %>
-       </a></li>
           <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
         <span class="caret"></span></a>
@@ -46,73 +42,73 @@
           <li><a>4. Save the letters you get for future.</a></li>
         </ul>
       </li>
-
-          
-
-
-         <li class="dropdown"> 
-        <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> 
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="edit">My Profile</a></li>
+      
+      <% if current_user!=nil %> 
+      <li><a href="#">Score: <%= current_user.score %> </a></li>
+      <li class="dropdown"> 
+         
+         <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
+       <ul class="dropdown-menu">
+          <li><a href="edit">Update Profile</a></li>
           <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
         </ul>
       </li>
-          
+      <% else %>
+      <li><a>Login ::</a></li>
+      <li ><a href="auth/facebook"> <img border="0" alt="facebook" src="fb.jpg" class="img-circle"width="30" height="30"></a></li>
+      <li ><a href="/auth/google_oauth2"> <img border="0" alt="Gmail" src="gmail.jpg" class="img-circle" width="30" height="30"></a></li>
+      <% end %>
     </ul>
   </div>
   </div>
 </nav>
 </div>
 
-
-<div class="row">
-<div class="span6">
-<div class="well">
 <% if @question!=nil %>
-<p><%= @question.statement%> </p>
-</div>
-</div>
-</div>
-
 <div class="row">
-<div class="span6">
+
+<div class="col-md-6">
 <div class="well">
 
+<p><%= @question.statement%> </p>
+
+</div>
 <%= form_tag(index_path, method: "get") do %>
-                                  
-                                  <div class="form-group">
-                                      <!-- <input type="text" name="name" class="form-control" required="required" placeholder="Name"> -->
-                                      <%= text_area_tag :answer, params[:answer], placeholder: "Your Answer", class: 'form-control' %>
-                               
-
-                                 </div> 
-
-                                 <div class="span2">
-                                      <!-- <input type="submit" name="submit" class="btn btn-submit" value="Submit"> -->
-                                      <%= submit_tag "Submit", class:'btn btn-submit' %>
-                                  </div> 
-                    <% end %>
-
-
+ <div class="form-group">
+<%= text_area_tag :answer, params[:answer], placeholder: "Your Answer", class: 'form-control' %>
+</div> 
+<div class="col-md-4">
+<%= submit_tag "Submit", class:'btn btn-submit' %>
 </div>
+<% end %>
 </div>
 
-
-<div class="span5">
+<div class="col-md-2"> </div>
+<div class="col-md-4">
 <% if @question.imageurl!=nil %>
 <img src="<%=@question.imageurl%>" class="slider-hill" alt="slider image">
   <%end%> 
-  
+ </div>
 
-<%= audio_tag("300.wav", autoplay: false, controls: true) %>
-<% else%>
-<h1>Wait for the Upcoming Questions.</h1>
-<%end%>
-</div>
 </div>
 
+<div class="row">
 
+<div class="col-md-8">
+</div> 
+
+<div class="col-md-4">
+<% if @question.audiourl!=nil %>
+<%= audio_tag(@question.audiourl, autoplay: false, controls: true) %>
+ <%end%> 
+</div>
+
+
+</div>
+
+<% else %>
+<p>Wait for ques </p>
+<% end %>
 
 </body>
 </html>

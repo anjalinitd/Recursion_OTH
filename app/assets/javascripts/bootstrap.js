@@ -19,7 +19,7 @@
 $.fn.pageMe = function(opts){
     var $this = this,
         defaults = {
-            perPage: 5,
+            perPage: 1000,
             showPrevNext: false,
             hidePageNumbers: false
         },

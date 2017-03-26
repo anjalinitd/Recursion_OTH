@@ -4,18 +4,17 @@ before_action :set_auth
 
 
     def leaderboard
-      @users=User.order(updated_at: :desc)
+      @users=User.all
       @users=@users.sort_by(&:score).reverse
-      @users = @users.paginate(page: params[:page], per_page: 5)
+      @users = @users.paginate(page: params[:page], per_page: 10)
       @id=1
     end
 
 	def index
 
      user=current_user
-
-     if current_user.score==nil
-      current_user.score=0
+     
+     if current_user.score==0
       session[:victor]=0
     end
 
@@ -79,12 +78,16 @@ before_action :set_auth
 
     def edit
     @user=current_user
+     current_user.college=params[:college]
+      current_user.save
     end
 
   def update
     @user=current_user
 
     if @user.update(user_params)
+      current_user.college=params[:college]
+      current_user.save
       flash[:notice]="Your Profile was successfully Updated!!"
       redirect_to home_path
     else

@@ -69,15 +69,20 @@
                 </div>
             </div> -->
 <br />
-            <div class="form-group">
+            
            <p> <%=f.label :college %>
             <% if @user.college == nil %>
-            <%= f.text_area :college,class: 'form-control',:rows =>"1" %>
+             <%= form_tag(update_path, method: "post") do %>
+                                  
+                                  <div class="form-group">
+                                    <%= text_area_tag :college, params[:college], placeholder: "College name", class: 'form-control',:rows =>"1"%>
+                                   </div> 
+             <% end %>
             <% else %>
             <%= f.text_area :name, class: 'form-control',:rows =>"1" %>
             <% end %>
              </p>
-            </div>
+            
 <br />
         </div>
         </div>
