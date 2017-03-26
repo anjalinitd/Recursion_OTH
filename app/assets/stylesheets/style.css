@@ -133,7 +133,7 @@ input[type=text], input[type=submit], textarea {
 	width: 100%;
 	font-family: "Bitstream Charter"
 	padding: 0.5em;
-	font-size: 5em;
+	font-size: 2em;
 	margin-bottom: 1.5em;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;

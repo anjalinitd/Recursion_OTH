@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     if user.score==nil
       user.score=0
+      user.save!
     end
     session[:score]=user.score
     redirect_to root_url, notice: "SIGNED IN"

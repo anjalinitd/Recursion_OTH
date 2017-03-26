@@ -4,8 +4,9 @@ before_action :set_auth
 
 
     def leaderboard
-      @users= User.all
-      @users = @users.all.paginate(page: params[:page], per_page: 3)
+      @users=User.order(updated_at: :desc)
+      @users=@users.sort_by(&:score).reverse
+      @users = @users.paginate(page: params[:page], per_page: 5)
       @id=1
     end
 
@@ -96,7 +97,7 @@ before_action :set_auth
   private
 
   def user_params
-    params.require(:user).permit(:name,:college)
+    params.permit(:college)
   end
 
 end

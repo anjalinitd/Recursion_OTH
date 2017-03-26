@@ -28,7 +28,9 @@
     </div>
     <ul id="menu-main" class="nav navbar-nav navbar-right">
       <li><a title="team" href="home">Home</a></li>
+      <% if current_user!=nil %> 
       <li><a title="team" href="leaderboard">Leaderboard</a></li>
+      <% end %>
       <li><a href="#">Score:
       <% if current_user %>
        <%= current_user.score %>
@@ -86,7 +88,7 @@
 
                                  </div> 
 
-                                 <div class="span3">
+                                 <div class="span2">
                                       <!-- <input type="submit" name="submit" class="btn btn-submit" value="Submit"> -->
                                       <%= submit_tag "Submit", class:'btn btn-submit' %>
                                   </div> 

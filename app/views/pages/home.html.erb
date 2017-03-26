@@ -19,10 +19,7 @@
 
      background-image: url("https://s-media-cache-ak0.pinimg.com/originals/f9/c4/4a/f9c44a9e748f379f2645665af44caff0.jpg");
      background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
-   
-   background-size: contain;
-   margin-left: 50px;
-   margin-top: 300px;
+   background-size: cover;
   }
 </style>
 </head>
@@ -38,8 +35,9 @@
     </div>
     <ul id="menu-main" class="nav navbar-nav navbar-right">
     <li><a title="team" href="home">Home</a></li>
+        <% if current_user!=nil %> 
          <li><a title="team" href="leaderboard">Leaderboard</a></li>
-         
+         <% end %>
           <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Rules
         <span class="caret"></span></a>
@@ -52,7 +50,7 @@
       </li>
       
       <% if current_user!=nil %> 
-      <li><a href="#">Score: <%= current_score %> </a></li>
+      <li><a href="#">Score: <%= current_user.score %> </a></li>
       <li class="dropdown"> 
          
          <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>

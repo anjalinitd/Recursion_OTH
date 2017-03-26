@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  require 'will_paginate/array'
   protect_from_forgery with: :exception
  protect_from_forgery with: :null_session
  helper_method :current_user
@@ -21,12 +22,12 @@ class ApplicationController < ActionController::Base
 
 
   def current_score
-  	if current_user != nil
-    	if current_user.score==nil
-    		current_user.score=0
-    	end
+    if current_user == nil or current_user.score==nil
+      @current_score = 0
+    else
       @current_score = current_user.score
     end
+    @current_score
   end
 
 end
