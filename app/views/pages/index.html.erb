@@ -3,15 +3,19 @@
 <head>
   <style>    
     /* Set black background color, white text and some padding */
+    
     body{
        height: 100%;
    width: 100%;
 
       background-image: url("https://static1.squarespace.com/static/532b3fbfe4b0c5a9ade0bc44/t/58055365579fb3bd4def74e5/1479485156983/compass2.jpg");
+      overflow-x:hidden;
+    overflow-y:hidden;
+      background-size:100% 100%;
         background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
    background-size: cover;
-      padding-left: 30px;
-      margin-top: 150px;
+      padding-left: 50px;
+      margin-top: 130px;
     }
     
   </style>
@@ -25,7 +29,7 @@
  <div class="navbar-inner">
   <div class="container-fluid">
     <div class="navbar-header">
-      <h1 class="brand"> <a  href="#">RECursion</a> </h1>
+      <h1 class="brand"> <a  href="#">Quaerere</a> </h1>
     </div>
     <ul id="menu-main" class="nav navbar-nav navbar-right">
     <li><a title="team" href="home">Home</a></li>
@@ -38,8 +42,8 @@
         <ul class="dropdown-menu">
           <li><a>1. Write all answers in lowercase.</a></li>
           <li><a>2. Don't include space between two words.</a></li>
-          <li><a>3. Try to link the question with the image.</a></li>
-          <li><a>4. Save the letters you get for future.</a></li>
+          <li><a>3. Try to link the question with the image and audio.</a></li>
+         
         </ul>
       </li>
       
@@ -49,7 +53,7 @@
          
          <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
        <ul class="dropdown-menu">
-          <li><a href="edit">Update Profile</a></li>
+          
           <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
         </ul>
       </li>
@@ -86,7 +90,9 @@
 <div class="col-md-2"> </div>
 <div class="col-md-4">
 <% if @question.imageurl!=nil %>
-<img src="<%=@question.imageurl%>" class="slider-hill" alt="slider image">
+<div style="margin-right: 10px;">
+<img src="<%=@question.imageurl%>" class="slider-hill" >
+</div>
   <%end%> 
  </div>
 

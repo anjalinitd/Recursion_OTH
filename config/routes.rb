@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
  
-  mount RailsAdmin::Engine => '/anjali2679', as: 'rails_admin'
+ 
+  mount RailsAdmin::Engine => '/anjali24849762', as: 'rails_admin'
+ # mount RailsAdmin::Engine => '/anjali2679', as: 'rails_admin'
     # devise_for :users
       root 'pages#home'
        get 'index' => 'pages#index'
@@ -10,8 +12,8 @@ Rails.application.routes.draw do
         get 'leaderboard' => 'pages#leaderboard'
         get 'victory' => 'pages#victory'
         get 'loginsignup' => 'sessions#loginsignup'
-      # get '/user/:id' => 'pages#profile'
-      get 'users' =>'pages#profile'
+       get '/user/:id' => 'pages#edit'
+      get 'users' =>'pages#edit'
       post 'users' => 'pages#home'
         get 'edit' =>'pages#edit'
         get 'update' => 'pages#update'
