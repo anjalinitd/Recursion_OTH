@@ -20,6 +20,7 @@
  *= require rails_bootstrap_forms
  */
  *= require bootstrap
+//= require toastr_rails
 
  @import 'bootstrap-sprockets';
 @import 'bootstrap';
