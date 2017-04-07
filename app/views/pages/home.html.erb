@@ -18,7 +18,7 @@
    width: 100%;
 
      background-image: url("https://s-media-cache-ak0.pinimg.com/originals/f9/c4/4a/f9c44a9e748f379f2645665af44caff0.jpg");
-     background-repeat: no-repeat;/*we want to have one single image not a repeated one*/  
+     background-repeat: no-repeat;/*we want to have one single image not a repeated one*/
    background-size: cover;
   }
   h1{
@@ -55,7 +55,7 @@
     </div>
     <ul id="menu-main" class="nav navbar-nav navbar-right">
     <li><a title="team" href="home">Home</a></li>
-        <% if current_user!=nil %> 
+        <% if current_user!=nil %>
          <li><a title="team" href="leaderboard">Leaderboard</a></li>
          <% end %>
           <li class="dropdown">
@@ -65,17 +65,17 @@
           <li><a>1. Write all answers in lowercase.</a></li>
           <li><a>2. Don't include space between two words.</a></li>
           <li><a>3. Try to link the question with the image and audio.</a></li>
-          
+
         </ul>
       </li>
-      
-      <% if current_user!=nil %> 
+
+      <% if current_user!=nil %>
       <li><a href="#">Score: <%= current_user.score %> </a></li>
-      <li class="dropdown"> 
-         
+      <li class="dropdown">
+
          <a  class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %> <span class="caret"></span></a>
        <ul class="dropdown-menu">
-        
+
           <li><%= link_to "Sign out", 'sign_out', method: :delete , class: "nav-link"%></li>
         </ul>
       </li>
@@ -91,8 +91,8 @@
 </div>
 <!-- Header area -->
 
-    
-    
+
+
 </section>
 
 

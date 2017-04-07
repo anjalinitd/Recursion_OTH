@@ -29,7 +29,7 @@ class PagesController < ApplicationController
         myHash["Score"] = current_score
       else
         myHash["Statement"] = @question.statement
-        myHash["Image"] = @question.image_url
+        myHash["Image"] = @question.imageurl
         myHash["Score"] = current_score
       end
       myHash = myHash.to_json
